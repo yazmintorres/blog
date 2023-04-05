@@ -147,6 +147,7 @@ hr {
   margin-left: 20px;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .write {
@@ -170,6 +171,8 @@ hr {
 .link h5 {
   margin: 0;
   padding: 0;
+  display: inline-block;
+  width: 100px;
 }
 
 /* LOGIN  */
