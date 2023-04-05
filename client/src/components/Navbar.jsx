@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 function MyNavBar(props) {
+  const { currentUser, logout } = useContext(AuthContext);
   return (
     <Navbar bg="dark" variant="dark" sticky="top">
       <div className="nav-container">
@@ -27,8 +30,15 @@ function MyNavBar(props) {
             <h5>Finance</h5>
           </Link>
           <div className="user">
-            <span>User: Yazmin</span>
-            <span>Logout</span>
+            {/* the line below is using optional chaining */}
+            {currentUser ? <span>User: {currentUser.username}</span> : null}
+            {currentUser ? (
+              <button onClick={logout}>Logout</button>
+            ) : (
+              <Link style={{ fontWeight: "bold" }} className="link" to="/login">
+                LOGIN
+              </Link>
+            )}
             <span className="write">
               <Link className="link" to={"/write"}>
                 Write

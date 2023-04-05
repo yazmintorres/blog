@@ -21,12 +21,12 @@ const AuthContextProvider = ({ children }) => {
     if (!res.ok) return resBody;
   };
 
-  const logout = async (input) => {
-    const res = await fetch("http://localhost:8080/api/auth/login", {
+  const logout = async () => {
+    const res = await fetch("http://localhost:8080/api/auth/logout", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(input),
+      // body: JSON.stringify(),
     });
     const resBody = await res.json();
     console.log(resBody);
