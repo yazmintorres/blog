@@ -26,9 +26,6 @@ function MyNavBar(props) {
           <Link className="link" to={"/?cat=finance"}>
             <h5>Finance</h5>
           </Link>
-          <Link className="link" to={"/?cat=books"}>
-            <h5>Books</h5>
-          </Link>
           <div className="user">
             <span>User: Yazmin</span>
             <span>Logout</span>
