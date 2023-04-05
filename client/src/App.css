@@ -336,10 +336,6 @@ textarea {
   display: flex;
 }
 
-input {
-  flex: 1;
-}
-
 label {
   flex: 2;
 }
