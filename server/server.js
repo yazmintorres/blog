@@ -6,11 +6,17 @@ const db = require("./db/db-connection.js");
 const postRoutes = require("./routes/posts.js");
 const authRoutes = require("./routes/auth.js");
 const userRoutes = require("./routes/users.js");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-app.use(cors());
+const corsOptions = {
+  origin: true, //included origin as true
+  credentials: true, //included credentials as true
+};
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser());
 
 // manage routes and controllers using this file
 app.use("/api/posts", postRoutes);
