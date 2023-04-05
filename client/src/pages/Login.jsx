@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { AuthContext } from "../context/authContext";
 
 const Login = () => {
   const [input, setInputs] = useState({
@@ -11,6 +12,7 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleChange = (e) => {
     setInputs({ ...input, [e.target.name]: e.target.value });
@@ -19,7 +21,20 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // navigate("/");
+      const error = await login(input);
+      if (error) {
+        setError(error);
+        return;
+      }
+      // if (res.status === 404) {
+      //   setError(resBody);
+      //   return;
+      // }
+      // if (res.status === 400) {
+      //   setError(resBody);
+      //   return;
+      // }
+      navigate("/");
     } catch (error) {
       console.error(error.message);
     }
