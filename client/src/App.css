@@ -190,13 +190,21 @@ form {
   flex-direction: column;
   gap: 20px;
   margin-top: 10px;
+  width: 20%;
 }
 
-.login {
+.btn-register,
+.btn-login {
   padding: 10px;
   border: none;
   background: lightblue;
   color: black;
   cursor: pointer;
-  border-radius: 20%;
+  border-radius: 25%;
 }
+
+/* input {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid gray;
+} */

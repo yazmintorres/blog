@@ -8,7 +8,7 @@ const Login = () => {
       <form>
         <input required type="text" placeholder="username" />
         <input required type="password" placeholder="password" />
-        <button className="login">Login</button>
+        <button className="btn-login">Login</button>
         <p>This is an error!</p>
         <span>
           Don't have an account? <Link to="/register">Register</Link>
