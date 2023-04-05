@@ -66,10 +66,6 @@ const SinglePost = () => {
           adipisci autem provident in nesciunt, facilis et molestiae tempora
           officiis distinctio voluptate dolorum dolor? Error totam ex vel.
         </p>
-        <br />
-        <br />
-        <br />
-        <br />
       </div>
     </div>
   );
