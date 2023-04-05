@@ -170,3 +170,33 @@ hr {
   margin: 0;
   padding: 0;
 }
+
+/* LOGIN  */
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.auth h1 {
+  margin: 10px auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.login {
+  padding: 10px;
+  border: none;
+  background: lightblue;
+  color: black;
+  cursor: pointer;
+  border-radius: 20%;
+}
