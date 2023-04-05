@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Register = () => {
@@ -9,16 +9,39 @@ const Register = () => {
     password: "",
   });
 
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setInputs({ ...input, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => console.log(input), [input]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:8080/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+      });
+      const resBody = await res.json();
+      if (res.status === 409) {
+        setError(resBody);
+        return;
+      }
+      navigate("/login");
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  // make post request to appropriate endpoint
 
   return (
     <div className="auth">
       <h1>Register</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           required
           type="text"
@@ -43,8 +66,10 @@ const Register = () => {
           value={input.password}
           onChange={handleChange}
         />
-        <button className="btn-register">Register</button>
-        <p>This is an error!</p>
+        <button type="submit" className="btn-register">
+          Register
+        </button>
+        <p style={{ color: "red" }}>{error}</p>
         <span>
           Have an account? <Link to="/login">Login</Link>
         </span>
