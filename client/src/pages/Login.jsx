@@ -19,17 +19,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8080/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input),
-      });
-      const resBody = await res.json();
-      // if (res.status === 409) {
-      //   setError(resBody);
-      //   return;
-      // }
-      navigate("/");
+      // navigate("/");
     } catch (error) {
       console.error(error.message);
     }
@@ -58,7 +48,7 @@ const Login = () => {
         <button type="submit" className="btn-login">
           Login
         </button>
-        <p>{error}</p>
+        <p style={{ color: "red" }}>{error}</p>
         <span>
           Don't have an account? <Link to="/register">Register</Link>
         </span>
