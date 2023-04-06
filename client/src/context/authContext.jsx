@@ -7,7 +7,7 @@ const AuthContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("user") || null)
   );
 
-  console.log(currentUser);
+  // console.log(currentUser);
   const login = async (input) => {
     const res = await fetch("http://localhost:8080/api/auth/login", {
       method: "POST",

@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
 const WriteForm = () => {
-  const handleChange = (property) => {
-    return (e) => console.log(e);
+  const [inputs, setInputs] = useState({
+    title: "",
+    body: "",
+    img: "",
+    cat: "",
+  });
+
+  console.log(inputs);
+
+  const handleChange = (e) => {
+    // console.log("is checked", e.target.checked);
+    // console.log(e.target.name);
+    // console.log(e.target.value);
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -17,7 +33,14 @@ const WriteForm = () => {
           <Form.Label htmlFor="title">
             Title: <span className="required">*</span>
           </Form.Label>
-          <input type="text" placeholder="Title" required />
+          <input
+            type="text"
+            placeholder="Title"
+            name="title"
+            value={inputs.title}
+            onChange={handleChange}
+            required
+          />
         </Form.Group>
         <Form.Group>
           <Form.Label htmlFor="body">
@@ -27,14 +50,21 @@ const WriteForm = () => {
           <textarea
             id="body"
             placeholder="Write your blog post here"
-            value={""}
-            onChange={handleChange("notes")}
+            name="body"
+            value={inputs.body}
+            onChange={handleChange}
             required
           />
         </Form.Group>
         <Form.Group>
           <Form.Label htmlFor="img-url">Image URL</Form.Label>
-          <input type="text" placeholder="Img URL" />
+          <input
+            type="text"
+            placeholder="Img URL"
+            name="img"
+            value={inputs.img}
+            onChange={handleChange}
+          />
         </Form.Group>
       </Form>
       <div className="menu">
@@ -48,17 +78,31 @@ const WriteForm = () => {
           </span>
           <div className="buttons">
             <button className="btn-draft">Save as draft</button>
-            <button className="btn-update">Update</button>
+            <button onClick={handleSubmit} className="btn-update">
+              Publish
+            </button>
           </div>
         </div>
         <div className="item">
           <h1>Category</h1>
           <div className="cat">
-            <input type="radio" name="cat" value="webdev" id="webdev" />
+            <input
+              type="radio"
+              name="cat"
+              value="webdev"
+              id="webdev"
+              onChange={handleChange}
+            />
             <label htmlFor="webdev">Web Dev</label>
           </div>
           <div className="cat">
-            <input type="radio" name="cat" value="finance" id="finance" />
+            <input
+              type="radio"
+              name="cat"
+              value="finance"
+              id="finance"
+              onChange={handleChange}
+            />
             <label htmlFor="finance">Finance</label>
           </div>
         </div>

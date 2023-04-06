@@ -237,7 +237,7 @@ form {
   gap: 50px;
   height: 10vh;
   flex: 2;
-  flex-basis: 25vh;
+  /* flex-basis: 25vh; */
 }
 
 .post img {
@@ -295,8 +295,9 @@ form {
 
 .write-post {
   display: flex;
-  margin-top: 20px;
+  margin-top: 40px;
   justify-content: flex-start;
+  margin-bottom: 40px;
 }
 
 .form-students {
@@ -334,6 +335,10 @@ textarea {
 
 .cat {
   display: flex;
+}
+
+.cat input {
+  flex: 1;
 }
 
 label {

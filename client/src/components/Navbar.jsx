@@ -31,7 +31,13 @@ function MyNavBar(props) {
           </Link>
           <div className="user">
             {/* the line below is using optional chaining */}
-            {currentUser ? <span>User: {currentUser.username}</span> : null}
+            {currentUser ? (
+              <span>
+                User:{" "}
+                {currentUser.username[0].toUpperCase() +
+                  currentUser.username.slice(1)}
+              </span>
+            ) : null}
             {currentUser ? (
               <button onClick={logout}>Logout</button>
             ) : (
