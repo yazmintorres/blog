@@ -33,8 +33,29 @@ const getPost = async (req, res) => {
   }
 };
 
-const addPost = (req, res) => {
-  res.json("from controller");
+const addPost = async (req, res) => {
+  try {
+    const token = await req.cookies.access_token;
+    if (!token) return res.status(401).json("Not authenticated");
+
+    const userInfo = jwt.verify(token, "jwtkey");
+    console.log("userinfo", userInfo);
+
+    const { title, body, img, cat } = req.body;
+    console.log(req.body);
+    const q =
+      "INSERT INTO posts (title, body, img, cat, uid) VALUES ($1, $2, $3, $4, $5) RETURNING *";
+    const { rows: addedPost } = await db.query(q, [
+      title,
+      body,
+      img,
+      cat,
+      userInfo.id,
+    ]);
+    res.status(200).json(addedPost);
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 const deletePost = async (req, res) => {
@@ -58,7 +79,33 @@ const deletePost = async (req, res) => {
   }
 };
 
-const updatePost = (req, res) => {
-  res.json("from controller");
+const updatePost = async (req, res) => {
+  console.log("test 1");
+  try {
+    const { post_id } = req.params;
+    console.log("req params", req.params);
+    const token = await req.cookies.access_token;
+    // console.log("token", token);
+    if (!token) return res.status(401).json("Not authenticated");
+
+    const userInfo = jwt.verify(token, "jwtkey");
+    // console.log("userinfo", userInfo);
+
+    const { title, body, img, cat } = req.body;
+    console.log("req body", req.body);
+    const q =
+      "UPDATE posts SET title=$1, body=$2, img=$3, cat=$4 WHERE id = $5 AND uid = $6 RETURNING *";
+    const { rows: addedPost } = await db.query(q, [
+      title,
+      body,
+      img,
+      cat,
+      post_id,
+      userInfo.id,
+    ]);
+    res.status(200).json(addedPost);
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 module.exports = { getPosts, getPost, addPost, deletePost, updatePost };

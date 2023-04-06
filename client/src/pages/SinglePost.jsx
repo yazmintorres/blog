@@ -64,7 +64,7 @@ const SinglePost = () => {
           </div>
           {currentUser?.username === post.username && (
             <div className="edit">
-              <Link to={`/write?edit=${post.post_id}`}>
+              <Link to={`/write?edit=${post.post_id}`} state={post}>
                 <FcEditImage />
               </Link>
               <Link onClick={handleDelete}>

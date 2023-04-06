@@ -64,7 +64,6 @@ const Home = () => {
                 <h1>{post.title}</h1>
               </Link>
               <p>{post.body}</p>
-              <button>Read More</button>
             </div>
           </div>
         ))}

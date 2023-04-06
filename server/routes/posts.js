@@ -21,6 +21,6 @@ router.post("/", addPost);
 router.delete("/:post_id", deletePost);
 
 // update a specific post by id
-router.put("/:id", updatePost);
+router.put("/:post_id", updatePost);
 
 module.exports = router;
