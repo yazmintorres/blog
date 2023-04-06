@@ -306,11 +306,6 @@ form {
   justify-content: space-around;
   flex-direction: row;
   flex: 1;
-  // old
-  /* display: flex;
-  flex-direction: column;
-  flex: 2;
-  align-items: stretch; */
 }
 
 .form-inputs {
