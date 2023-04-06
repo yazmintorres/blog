@@ -57,44 +57,46 @@ const WriteForm = () => {
   return (
     <div className="write-post">
       <Form className="form-students" onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label htmlFor="title">
-            Title: <span className="required">*</span>
-          </Form.Label>
-          <input
-            type="text"
-            placeholder="Title"
-            name="title"
-            value={inputs.title}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="body">
-            Content: <span className="required">*</span>
-          </Form.Label>
-          <textarea
-            id="body"
-            placeholder="Write your blog post here"
-            name="body"
-            value={inputs.body}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="img-url">Image URL</Form.Label>
-          <input
-            type="url"
-            placeholder="Img URL"
-            name="img"
-            value={inputs.img}
-            onChange={handleChange}
-          />
-        </Form.Group>
+        <div className="form-inputs">
+          <Form.Group>
+            <Form.Label htmlFor="title">
+              Title: <span className="required">*</span>
+            </Form.Label>
+            <input
+              type="text"
+              placeholder="Title"
+              name="title"
+              value={inputs.title}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="body">
+              Content: <span className="required">*</span>
+            </Form.Label>
+            <textarea
+              id="body"
+              placeholder="Write your blog post here"
+              name="body"
+              value={inputs.body}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="img-url">Image URL</Form.Label>
+            <input
+              type="url"
+              placeholder="Img URL"
+              name="img"
+              value={inputs.img}
+              onChange={handleChange}
+            />
+          </Form.Group>
+        </div>
 
-        <Form.Group>
+        <Form.Group className="form-actions">
           <div className="menu">
             <div className="item">
               <h1>Publish</h1>

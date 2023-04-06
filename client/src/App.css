@@ -222,6 +222,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 50px;
+  padding-bottom: 50px;
 }
 
 .img {
@@ -302,9 +303,22 @@ form {
 
 .form-students {
   display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex: 1;
+  // old
+  /* display: flex;
   flex-direction: column;
   flex: 2;
-  align-items: stretch;
+  align-items: stretch; */
+}
+
+.form-inputs {
+  flex: 2;
+}
+
+.form-actions {
+  flex: 1;
 }
 
 .menu {
@@ -331,6 +345,7 @@ textarea {
 .buttons {
   display: flex;
   gap: 10px;
+  justify-content: center;
 }
 
 .cat {

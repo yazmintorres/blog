@@ -9,12 +9,14 @@ const Home = () => {
   const location = useLocation();
   const cat = location.search;
 
-  // make a request to backedn to get posts
+  // make a request to backend to get posts
   const getPosts = async () => {
     try {
       const respose = await fetch(`http://localhost:8080/api/posts${cat}`);
       const posts = await respose.json();
-      // console.log(posts);
+      console.log(posts);
+      posts.sort((a, b) => a.id - b.id);
+      console.log(posts);
       setPosts(posts);
     } catch (error) {
       console.log(error.message);
