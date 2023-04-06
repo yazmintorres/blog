@@ -1,31 +1,59 @@
+import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Logo from "../assets/BlueTechtonicaWord.png";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 function MyNavBar(props) {
+  const { currentUser, logout } = useContext(AuthContext);
   return (
-    <>
-      <Navbar bg="dark" variant="dark" sticky="top">
-        <Container>
-          <Navbar.Brand href="/">
-            <img
-              src={Logo}
-              height="30"
-              className="d-lg-inline-block"
-              alt="React Bootstrap logo"
-            />
-          </Navbar.Brand>
-          <Nav.Link>Your Link</Nav.Link>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              Signed in as: <a href="#login">Yazmin Torres</a>
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </>
+    <Navbar bg="dark" variant="dark" sticky="top">
+      <div className="nav-container">
+        <div className="logo">
+          <h1>
+            ICode
+            <span>
+              <em>& more</em>
+            </span>
+          </h1>
+          <hr />
+          <p>A PERSONAL BLOG</p>
+        </div>
+        <div className="links">
+          <Link className="link" to={"/"}>
+            <h5>Home</h5>
+          </Link>
+          <Link className="link" to={"/?cat=webdev"}>
+            <h5>Web Dev</h5>
+          </Link>
+          <Link className="link" to={"/?cat=finance"}>
+            <h5>Finance</h5>
+          </Link>
+          <div className="user">
+            {/* the line below is using optional chaining */}
+            {currentUser ? (
+              <span>
+                User:{" "}
+                {currentUser.username[0].toUpperCase() +
+                  currentUser.username.slice(1)}
+              </span>
+            ) : null}
+            {currentUser ? (
+              <button onClick={logout}>Logout</button>
+            ) : (
+              <Link style={{ fontWeight: "bold" }} className="link" to="/login">
+                LOGIN
+              </Link>
+            )}
+            <span className="write">
+              <Link className="link" to={"/write"}>
+                Write
+              </Link>
+            </span>
+          </div>
+        </div>
+      </div>
+    </Navbar>
   );
 }
 

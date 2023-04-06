@@ -134,5 +134,16 @@ CREATE TABLE public.posts (
             ON UPDATE CASCADE
 );
 
-INSERT INTO public.posts(title, body, img, uid) VALUES ('First Post','This is my blog description','https://images.pexels.com/photos/6157049/pexels-photo-6157049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', 1);
+INSERT INTO public.posts(title, body, img, uid) VALUES ('About Me', 'Hi everyone, in this post I plan to give a little background about myself. I hope some of you can relate! 
+1. Born and raised in the Bay Area 
+2. Proud Mexican-American 
+3. Graduated from Santa Clara University with a BS in Biochemistry
+4. I worked for a year and a half as a Research Assistant at Genentech! That was lots of fun! 
+5. I am now trying to break into tech as a Software Engineer. Hello working remotely and (hopefully) better pay! 
+6.  My hobbies include listening to the podcast We Can Do Hard Things, working out, reading books and watching movies!',
+'https://s3-us-west-2.amazonaws.com/anchor-generated-image-bank/production/podcast_uploaded400/15025178/15025178-1620963269208-aa9865c47f259.jpg', 12);
+
+INSERT INTO public.posts(title, body, img, uid, cat) VALUES ('What I''ve Learned So Far', 'React.js, HTML/CSS, Node.js, Postgres, Express',
+'https://miro.medium.com/v2/resize:fit:786/format:webp/1*On7Uc_X23Cn-7QZS0dNEfQ.jpeg', 12, 'webdev');
+
 
